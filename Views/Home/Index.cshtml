@@ -1,0 +1,22 @@
+﻿@model Game
+
+@{
+    ViewBag.Title = "Blackjack";
+}
+
+<hand-heading type="Dealer" dealer="@Model.Dealer"></hand-heading>
+@await Component.InvokeAsync("Hand", new { hand = Model?.Dealer?.Hand })
+
+<hand-heading type="Player" player="@Model.Player"></hand-heading>
+@await Component.InvokeAsync("Hand", new { hand = Model?.Player?.Hand })
+<div class="row mb-2">
+    <div class="col-2 offset-3">
+        <action-button action="Deal" disabled="!Model.NeedsDeal"></action-button>
+    </div>
+    <div class="col-2">
+        <action-button action="Hit" disabled="Model.NeedsDeal"></action-button>
+    </div>
+    <div class="col-2">
+        <action-button action="Stand" disabled="Model.NeedsDeal"></action-button>
+    </div>
+</div>

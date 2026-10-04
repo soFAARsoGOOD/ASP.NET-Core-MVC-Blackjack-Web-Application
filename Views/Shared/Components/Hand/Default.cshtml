@@ -1,0 +1,8 @@
+﻿@model BlackJack.Models.Hand
+
+<div class="hand mb-4">
+    @foreach (var card in Model.Cards)
+    {
+        <img src="~/images/@(card.Name).svg" alt="@card.Name" />
+    }
+</div>
